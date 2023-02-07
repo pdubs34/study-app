@@ -1,0 +1,29 @@
+.banner { 
+    position: absolute; 
+    background-color: #D0D5D9; 
+    max-width: 100vw;
+    width: 100vw;
+    height: 60px;
+    margin-bottom: 15px;
+}
+.bannerHome{
+    position: absolute;
+    top: 2px;
+    left:2px;
+    text-decoration: none;
+}
+.bannerBoobPage{
+    position: absolute;
+    top: 2px;
+    left: 90%;
+    
+}
+
+.bannerLink1{
+    text-decoration: none;
+    color: black;
+}
+.bannerLink2{
+    text-decoration: none;
+    color:black;
+}
