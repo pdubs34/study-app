@@ -1,21 +1,18 @@
 import { Outlet, Link } from "react-router-dom";
 import "./client/styles/layout.css";
 
-function noUnderline() {
-  var el = document.getElementById('homeBanner');
-  el.style.textDecoration = "none";
-}
-function noUnderline2() {
-  var el = document.getElementById('boobPageBanner');
-  el.style.textDecoration = "none";
-}
 const Layout = () => {
   return (
     <>
+     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+        </style>
       <nav>
         <div className="banner">
-          <h2 className="bannerHome"><Link to="/" className="bannerLink1" >Flashcard</Link></h2>
-          <h2 className="bannerBoobPage"><Link to="/boobPage" className="bannerLink2">Boob Page</Link></h2>
+          <h1 className="bannerHome"><Link to="/" className="bannerLink" >Home</Link></h1>
+          <h1 className="bannerBoobPage"><Link to="/boobPage" className="bannerLink">Boob Page</Link></h1>
+          <h1 className="bannerSetEditor"><Link to="/setEditor" className="bannerLink">Create/Edit Sets</Link></h1>
+          <h1 className="bannerLogin"><Link to="/loginPage" className="bannerLink">Login </Link></h1>
         </div>
       </nav>
 

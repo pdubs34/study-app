@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import React, { useState, useRef } from 'react';
 import '../styles/home.css';
 import '../arrow-left.png';
-import axios from 'axios';
+import Axios from "axios";
 
 
 
@@ -185,14 +185,25 @@ export default function Home() {
         tempBool.current = 1;
       }
     }
-    const fetchAllCards = async () => {
-      try {
-        const res = await axios.get("http://localhost:9000/cards");
-        console.log(res.data);
-      } catch (err) {
-        console.log(err);
-      }
+    const getCards = () => {
+      Axios.get("http://localhost:3001/sets").then((response) => {
+        setFlashCards(response.data);
+      });
     };
+    
+    const addToDB = () => {
+      Axios.post("http://localhost:3001/addCardToDB", {
+        userId : 1,
+        cards : JSON.stringify(flashCards)
+    });
+    }
+
+    const updateSet = () => {
+      Axios.put("http://localhost:3001/updateCards",{
+        cards : JSON.stringify(flashCards),
+        setId : 1
+      });
+    }
     
     
 
@@ -205,8 +216,8 @@ export default function Home() {
         <input  onChange={updateQuestion} placeholder = "Enter Question" class='QuestionButton'/>
         <input  onChange={updateAnswer} placeholder = "Enter Answer" class='AnswerButton'/>  
         </div>
-        <button class = 'addButton' onClick={()=> fetchAllCards()}> Click to add card </button>
-        {/* <button class = 'addButton' onClick={()=> handleAddClick()}> Click to add card </button> */}
+        {/* <button class = 'addButton' onClick={()=> getCards()}> Click to add card </button> */}
+        <button class = 'addButton' onClick={()=> handleAddClick()}> Click to add card </button>
         <br />
         <h1 className='cardIndex'>{index.current + 1}/{flashCards.length}</h1>
         <button class = "DisplayedCard" placeholder='Need Card' 
@@ -219,6 +230,7 @@ export default function Home() {
         </button>
         <button class = "RightButton"onClick={() => handleRightClick()}>{"->"}</button>
         <button class = "EmptyButton"onClick={() => handleClear()}>{"Empty List"}</button>
+        <button class = "addToDB_Button"onClick={() => updateSet()}>{"Update Set"}</button>
         {flashCards.map((card, i) => (
           <div className="card-container" key={card.question}>
               <h1 id = {`listedQ${gottenIndex(card.question)}`}  className='listed-questions'>{card.question}</h1>
@@ -226,7 +238,6 @@ export default function Home() {
               <button id = "editButton" className='editButton' onClick={() => {handleEditMode(card.question,card.answer,gottenIndex(card.question))}}>{"Edit"}</button>
           </div> 
         ))}
-        
         </> 
       )
   }

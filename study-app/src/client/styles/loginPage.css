@@ -1,0 +1,16 @@
+.loginUsernameBox{
+    position: absolute;
+    top:100px;
+}
+.loginPasswordBox{
+    position: absolute;
+    top:150px;
+}
+.validateLoginButton{
+    position: absolute;
+    top: 200px;
+}
+.checker{
+    position: absolute;
+    top: 250px;
+}

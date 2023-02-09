@@ -7,23 +7,41 @@
     margin-bottom: 15px;
 }
 .bannerHome{
+    font-family: 'Raleway',sans-serif;
     position: absolute;
     top: 2px;
     left:2px;
     text-decoration: none;
+    margin-right: 10px;
 }
 .bannerBoobPage{
+    font-family: 'Raleway',sans-serif;
     position: absolute;
     top: 2px;
-    left: 90%;
-    
+    left: 90%; 
 }
 
-.bannerLink1{
+.bannerSetEditor{
+    font-family: 'Raleway',sans-serif;
+    position: absolute;
+    top: 2px;
+    left: 125px; 
+}
+
+.bannerLink{
     text-decoration: none;
     color: black;
 }
-.bannerLink2{
-    text-decoration: none;
-    color:black;
+.bannerSetEditor{
+    font-family: 'Raleway',sans-serif;
+    position: absolute;
+    top: 2px;
+    left: 125px; 
 }
+.bannerLogin{
+    font-family: 'Raleway',sans-serif;
+    position: absolute;
+    top: 2px;
+    left: 350px; 
+}
+

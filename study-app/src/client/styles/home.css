@@ -141,6 +141,8 @@
     top:75px;
 }
 
-/* .loaderButton{
-    position: relative;
-} */
+.addToDB_Button{
+    position: absolute;
+    top:500px;
+    width:70px;
+}
