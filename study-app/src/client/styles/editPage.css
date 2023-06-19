@@ -1,5 +1,15 @@
-.hello{
+.setContainer{
     position: absolute;
-    top:100px;
+    top:400px;
+}
+.setButtons{
+    position: relative;
+    margin-bottom: 15px;
+    font-family: 'Raleway',sans-serif;
+    border: black 2px;
+    max-width: 100vw;
+}
 
+body{
+    background-color: #B7D5D4;
 }

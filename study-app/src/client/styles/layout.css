@@ -1,6 +1,6 @@
 .banner { 
     position: absolute; 
-    background-color: #D0D5D9; 
+    background-color: #539DA2; 
     max-width: 100vw;
     width: 100vw;
     height: 60px;
@@ -30,7 +30,7 @@
 
 .bannerLink{
     text-decoration: none;
-    color: black;
+    color: #303536;
 }
 .bannerSetEditor{
     font-family: 'Raleway',sans-serif;

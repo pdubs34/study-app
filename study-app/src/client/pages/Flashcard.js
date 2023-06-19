@@ -1,9 +1,10 @@
 import { Card, Deck} from '../components'
-import { Link } from "react-router-dom";
-import React, { useState, useRef } from 'react';
+import { Link, resolvePath } from "react-router-dom";
+import React, { useState, useRef, useEffect } from 'react';
 import '../styles/home.css';
 import '../arrow-left.png';
 import Axios from "axios";
+import { useLocation } from "react-router-dom";
 
 
 
@@ -13,6 +14,7 @@ export default function Home() {
     const [answer, setAnswer] = useState(" ");
     const [listedQuestion, setListedQuestion] = useState(" ");
     const [listedAnswer, setListedAnswer] = useState(" ");
+    const[setName, nameSetter] = useState(null);
     let [cardText, setText] = useState("No Cards Yet! Add a card to begin!");
     let [cardAnswer, setAnswerText] = useState("No Cards Yet! Add a card to begin!");
     let [flashCards, setFlashCards] = useState([]);  
@@ -20,6 +22,9 @@ export default function Home() {
     let tempBool = useRef(0);
     let tempVar = useRef("");
     let index = useRef(-1);
+    const location = useLocation();
+    const name = new URLSearchParams(location.search).get("name");
+    const setId = new URLSearchParams(location.search).get("setId");
 
     
     function addCard(x,y){
@@ -41,9 +46,12 @@ export default function Home() {
     const updateAnswer = event => {
       setAnswer(event.target.value);
     };
+    const updateSetName = event => {
+      nameSetter(event.target.value);
+    };
     const updateNewCardText = event => {
       setText(flashCards[index.current].question);
-      setAnswerText(flashCards[index.current].answer)
+      setAnswerText(flashCards[index.current].answer);
     };
     const updateText = event => {
       if(cardText == flashCards[index.current].question){
@@ -53,6 +61,13 @@ export default function Home() {
         setText(flashCards[index.current].question);
       }
     };
+
+
+    useEffect(() => {
+      if(setId != null){
+      getCardsFromDatabase();
+      }
+    }, []);
 
     const handleLeftClick = (type) => {
       if(index.current == 0){
@@ -193,18 +208,33 @@ export default function Home() {
     
     const addToDB = () => {
       Axios.post("http://localhost:3001/addCardToDB", {
-        userId : 1,
-        cards : JSON.stringify(flashCards)
+        cards : JSON.stringify(flashCards),
+        userId : localStorage.getItem('id'),
+        setName: setName
     });
     }
 
     const updateSet = () => {
       Axios.put("http://localhost:3001/updateCards",{
         cards : JSON.stringify(flashCards),
-        setId : 1
+        userId : localStorage.getItem('id'),
+        setName: setName
       });
     }
     
+    const getCardsFromDatabase = () => {
+      Axios.get(`http://localhost:3001/cards/${localStorage.getItem('id')}/${setId}`,
+      ).then((response) => {
+        if(response != null){
+          let data = response.data[0];
+          data = data["cards"];
+          setFlashCards(JSON.parse(data));
+          index.current = 0;
+          updateNewCardText();
+        }
+      });
+    }
+
     
 
       return (
@@ -216,7 +246,6 @@ export default function Home() {
         <input  onChange={updateQuestion} placeholder = "Enter Question" class='QuestionButton'/>
         <input  onChange={updateAnswer} placeholder = "Enter Answer" class='AnswerButton'/>  
         </div>
-        {/* <button class = 'addButton' onClick={()=> getCards()}> Click to add card </button> */}
         <button class = 'addButton' onClick={()=> handleAddClick()}> Click to add card </button>
         <br />
         <h1 className='cardIndex'>{index.current + 1}/{flashCards.length}</h1>
@@ -230,7 +259,9 @@ export default function Home() {
         </button>
         <button class = "RightButton"onClick={() => handleRightClick()}>{"->"}</button>
         <button class = "EmptyButton"onClick={() => handleClear()}>{"Empty List"}</button>
-        <button class = "addToDB_Button"onClick={() => updateSet()}>{"Update Set"}</button>
+        <button class = "addToDB_Button"onClick={() => addToDB()}>{"Add Set"}</button>
+        <input  onChange={updateSetName} placeholder = "Set Name" class='setNameButton'/>
+        <button class = "getFromDB_Button"onClick={() => getCardsFromDatabase()}>{"Load a set from DB"}</button>
         {flashCards.map((card, i) => (
           <div className="card-container" key={card.question}>
               <h1 id = {`listedQ${gottenIndex(card.question)}`}  className='listed-questions'>{card.question}</h1>
