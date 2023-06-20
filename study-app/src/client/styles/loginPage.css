@@ -59,11 +59,17 @@
 }
 .viewPasswordButton{
     position: absolute;
-    top:160px;
+    top:155px;
     margin-left: 160px;
     width: 30px;
 }
 
-body{
-    background-color: #B7D5D4;
+.bodyWrapper{
+    background-image: url("../Background.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
+  
+  
+  

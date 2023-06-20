@@ -1,8 +1,10 @@
 import { Card, Deck} from '../components'
 import { Link, resolvePath } from "react-router-dom";
 import React, { useState, useRef, useEffect } from 'react';
+
 import '../styles/home.css';
-import '../arrow-left.png';
+import leftArrow from '../left.png';
+import rightArrow from '../right.png';
 import Axios from "axios";
 import { useLocation } from "react-router-dom";
 
@@ -164,6 +166,19 @@ export default function Home() {
       }
       return number;
     }
+
+    function hideOrShowArrows(){
+      let lArrow = document.getElementById('arrowLeft');
+      let rArrow = document.getElementById('arrowRight');
+      if (lArrow.style.visibility === "hidden") {
+        lArrow.style.visibility = "visible";
+        rArrow.style.visibility = "visible";
+      } else {
+        lArrow.style.visibility = "hidden";
+        rArrow.style.visibility = "hidden";
+      }
+    }
+
     function functionHandleEditRevert(type,indexF,text){
       var listed;
       var input;
@@ -249,15 +264,17 @@ export default function Home() {
         <button class = 'addButton' onClick={()=> handleAddClick()}> Click to add card </button>
         <br />
         <h1 className='cardIndex'>{index.current + 1}/{flashCards.length}</h1>
-        <button class = "DisplayedCard" placeholder='Need Card' 
-        onClick={()=> handleCardClick()}
-        onAnimationEnd={() => {setFlip(0); setText(tempVar.current);}}
-        flip={flip}>
-        {cardText}
-        </button>
-        <button class = "LeftButton" onClick={() => handleLeftClick()}> {"<-"}
-        </button>
-        <button class = "RightButton"onClick={() => handleRightClick()}>{"->"}</button>
+        <div className='cardHolder'>
+          <button class = "DisplayedCard" placeholder='Need Card' 
+          onClick={()=> {handleCardClick();hideOrShowArrows();}}
+          onAnimationEnd={() => {setFlip(0); setText(tempVar.current);hideOrShowArrows();}}
+          flip={flip}>
+          {cardText}
+          </button>
+          <img class = "LeftButton" id="arrowLeft" onClick={() => handleLeftClick()} src={leftArrow}> 
+          </img>
+        <img class = "RightButton" id="arrowRight" onClick={() => handleRightClick()} src= {rightArrow}></img>
+        </div>
         <button class = "EmptyButton"onClick={() => handleClear()}>{"Empty List"}</button>
         <button class = "addToDB_Button"onClick={() => addToDB()}>{"Add Set"}</button>
         <input  onChange={updateSetName} placeholder = "Set Name" class='setNameButton'/>

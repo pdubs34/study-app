@@ -14,8 +14,10 @@ const db = mysql.createConnection({
     port:"8800"
 });
 
-app.get("/cards", (req, res) => {
-    db.query("SELECT * FROM sets", (err, result) => {
+app.get("/cards/:userId/:setId", (req, res) => {
+    const user = req.params.userId;
+    const set = req.params.setId;
+    db.query("SELECT cards FROM sets where userId = ? and setId = ?",[user,set], (err, result) => {
       if (err) {
         console.log(err);
       } else {
@@ -43,10 +45,10 @@ app.put("/updateCards", (req, res) => {
 app.post("/addCardToDB", (req, res) => {
   const userId = req.body.userId;
   const cards = req.body.cards;
-
+  const setName = req.body.setName
   db.query(
-    "INSERT INTO sets (userId,cards) VALUES (?,?)",
-    [userId,cards],
+    "INSERT INTO sets (userId,cards,setName) VALUES (?,?,?)",
+    [userId,cards,setName],
     (err, result) => {
       if (err) {
         console.log(err);
@@ -71,10 +73,22 @@ app.post("/addCardToDB", (req, res) => {
 app.get("/validateLogin/:username/:password", (req, res) => {
   const user = req.params.username;
   const pass = req.params.password;
-  db.query("SELECT userId FROM loginuser WHERE username = ? AND userPassword = ?",[user,pass],(err, result) => {
+  db.query("SELECT userId,username FROM loginuser WHERE username = ? AND userPassword = ?",[user,pass],(err, result) => {
     if (err) {
       console.log(err);
     } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get("/getUserSets/:userId", (req, res) => {
+  const userId = req.params.userId;
+  db.query("SELECT setName,setId FROM sets WHERE  userId = ?",[userId],(err, result) => {
+    if(err){
+      console.log(err)
+    }
+    else{
       res.send(result);
     }
   });

@@ -1,8 +1,8 @@
 import Axios from "axios";
 import React, { useState, useEffect, Redirect, Route} from 'react';
 import Flashcard from "./Flashcard";
-import openEye from '../openeye.png';
-import closedEye from '../closed.png';
+import openEye from '../show.png';
+import closedEye from '../hide.png';
 import "../styles/loginPage.css";
 import { useNavigate } from "react-router-dom";
 
@@ -11,7 +11,7 @@ export default function CreateAndEdit(){
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [userId, setUserId] = useState("");
-  const [successfulLogin,setSuccessfulLogin] = useState(null);
+  const [successfulLogin,setSuccessfulLogin] = useState(0);
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -83,6 +83,7 @@ export default function CreateAndEdit(){
 
   return (
     <>
+    <div className= 'bodyWrapper'>
       {isLoading ? ( 
         <div>Loading...</div>
       ) : successfulLogin === "1" ? ( 
@@ -95,6 +96,7 @@ export default function CreateAndEdit(){
           <button onClick={() => handleValidateClick(username, password)} className="validateLoginButton">Log In</button>
         </div>
       )}
+    </div>
     </>
   );
 }
