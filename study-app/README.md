@@ -11,7 +11,7 @@ Next, you need to install sql server and run the server on root with localhost, 
 
 Then, make sure to update the index.js, in the "server" directory
 
-Finally, run the script below in the sql server
+Furthermore, run the script below in the sql server
 
 use flashcardapp;
 CREATE TABLE loginuser (
