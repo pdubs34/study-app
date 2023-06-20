@@ -2,6 +2,35 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+To start, make sure you have Node.js installed on your computer
+then run the following command while in the "study-app" directory
+
+### `npm @emotion/react,"@emotion/styled": "^11.11.0","@mui/icons-material": "^5.11.16","@mui/material": "^5.13.5", "@mui/styled-engine-sc": "^5.12.0","@mui/system": "^5.13.5","@testing-library/jest-dom": "^5.16.5","@testing-library/react": "^13.4.0","@testing-library/user-event": "^13.5.0","axios": "^1.3.2","cors": "^2.8.5","express": "^4.18.2","firebase": "^9.17.1","mysql": "^2.18.1","nodemon": "^2.0.20","react": "^18.2.0","react-dom": "^18.2.0","react-router-dom": "^6.6.2","react-scripts": "5.0.1","styled-components": "^5.3.11","web-vitals": "^2.1.4"`
+
+Next, you need to install sql server and run the server on root with localhost, port 8800, and name the connection "flashcardapp"
+
+Then, make sure to update the index.js, in the "server" directory
+
+Finally, run the script below in the sql server
+
+use flashcardapp;
+CREATE TABLE loginuser (
+  userId INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(200),
+  username VARCHAR(200),
+  userPassword VARCHAR(200)
+);
+CREATE TABLE sets (
+  setId INT AUTO_INCREMENT PRIMARY KEY,
+  userId INT,
+  setName VARCHAR(200),
+  cards VARCHAR(16000),
+  FOREIGN KEY (userId) REFERENCES loginuser(userId)
+);
+
+Finally, insert some data, which will eventually be no problem, along with this whole database stuff, once it is remote and not running on localhost
+
+
 ## Available Scripts
 
 In the project directory, you can run:
