@@ -1,47 +1,33 @@
-.banner { 
-    position: absolute; 
-    background-color: #BDC3C7; 
-    max-width: 100vw;
-    width: 100vw;
-    height: 60px;
-    margin-bottom: 15px;
-}
-.bannerHome{
-    font-family: 'Raleway',sans-serif;
-    position: absolute;
-    top: 2px;
-    left:2px;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #E84A5F;
+  }
+
+  li {
+    float: left;
+  }
+  li:hover{
+    background-color: #FFCB77;
+  }
+
+  li a {
+    display: block;
+    color: #FFFFFF ;
+    text-align: center;
+    padding: 14px 16px;
     text-decoration: none;
-    margin-right: 10px;
-}
-.bannerBoobPage{
-    font-family: 'Raleway',sans-serif;
-    position: absolute;
-    top: 2px;
-    left: 90%; 
-}
+  }
 
-.bannerSetEditor{
-    font-family: 'Raleway',sans-serif;
-    position: absolute;
-    top: 2px;
-    left: 125px; 
-}
+  li a:hover:not(.active) {
+    background-color: #FFCB77;
+  }
 
-.bannerLink{
-    text-decoration: none;
-    color: #303536;
-}
-.bannerSetEditor{
-    font-family: 'Raleway',sans-serif;
-    position: absolute;
-    top: 2px;
-    left: 125px; 
-}
-.bannerLogin{
-    font-family: 'Raleway',sans-serif;
-    position: absolute;
-    top: 2px;
-    left: 350px; 
-}
-
+  li a.active {
+    color: white;
+    background-color: #FFCB77;
+  }

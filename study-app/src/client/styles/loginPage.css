@@ -21,6 +21,31 @@
     color: black;
     
 }
+
+.loginEmailBox{
+    position: absolute;
+    top:200px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 10px;
+    border: 1px solid grey;
+    border-radius: 25px;
+    font-size: 16px;
+    color: black;
+    
+}
+.returnToLoginButton{
+    position: absolute;
+    top: 250px;
+    background-color: #77878B;
+    width: 180px;
+    color: white;
+    border-color: gray;
+    border-width: 5px;
+    border-radius: 25px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
 .loginContainer{
     display: flex;
     justify-content: center;
@@ -32,6 +57,17 @@
   top: 200px;
   background-color: #77878B;
   width: 130px;
+  color: white;
+  border-color: gray;
+  border-width: 5px;
+  border-radius: 25px;
+  font-family: 'Times New Roman', Times, serif;
+}
+.createNewUserButton{
+    position: absolute;
+  top: 250px;
+  background-color: #77878B;
+  width: 200px;
   color: white;
   border-color: gray;
   border-width: 5px;
@@ -63,13 +99,30 @@
     margin-left: 160px;
     width: 30px;
 }
+.verifyButton{
+    position: absolute;
+    top: 300px;
+    background-color: #77878B;
+    width: 180px;
+    color: white;
+    border-color: gray;
+    border-width: 5px;
+    border-radius: 25px;
+    font-family: 'Times New Roman', Times, serif;
+}
 
-.bodyWrapper{
+/* .bodyWrapper{
     background-image: url("../Background.png");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+} */
+.emailOpener{
+    position: absolute;
+    top:200px
 }
-  
-  
-  
+
+body{
+    /* background-color: #FF9E4A; */
+    background-color: white;
+}

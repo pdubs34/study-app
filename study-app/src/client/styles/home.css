@@ -17,6 +17,11 @@
     top:130px;
 }
 
+.dropdownMenu{
+    position: absolute;
+    top:200px;
+}
+
 .DisplayedCard {
     width: 450px;
     height: 300px;
@@ -47,7 +52,7 @@
 }
 
 .card-container{
-    position:relative;
+    position: relative;
     float: top;
     font-family: 'Raleway',sans-serif;
     margin-top: 10px;

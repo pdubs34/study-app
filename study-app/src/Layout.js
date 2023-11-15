@@ -4,21 +4,23 @@ import "./client/styles/layout.css";
 const Layout = () => {
   return (
     <>
-     <style>
+      <style>
         @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
-        </style>
+      </style>
       <nav>
         <localStorage>
-        <div className="banner">
-          <h1 className="bannerHome"><Link to="/" className="bannerLink" >Home</Link></h1>
-          <h1 className="bannerBoobPage"><Link to="/boobPage" className="bannerLink">Boob Page</Link></h1>
-          <h1 className="bannerSetEditor"><Link to="/setEditor" className="bannerLink">Create/Edit Sets</Link></h1>
-          <h1 className="bannerLogin"><Link to="/loginPage" className="bannerLink">Login </Link></h1>
-        </div>
+          <div className="banner">
+          <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/study">Study</Link></li>
+        <li><Link to="/setEditor">Create/Edit Sets</Link></li>
+        <li><Link to="/makeSet">Set Maker</Link></li>
+        <li style={{ float: 'right' }}><Link className="active" to="/loginPage">Login</Link></li>
+        </ul>
+          </div>
         </localStorage>
+        <Outlet />
       </nav>
-
-      <Outlet />
     </>
   )
 };

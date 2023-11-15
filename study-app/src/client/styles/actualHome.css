@@ -1,0 +1,113 @@
+ .card-container {
+  display: flex;
+  margin: 10px 0;
+  top: 125px;
+  width: 1000px;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+.card-container.createButton {
+  display: flex;
+  margin: 10px 0;
+  width: 1000px;
+  left: 400px;
+}
+.dropdownMenu{
+  position: absolute;
+  top: 50px
+}
+.createButton{
+  position: absolute;
+  left: 85%;
+  margin-top: 50px;
+  border-radius: 10px;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  background-color: lightgreen;
+}
+.input-and-button-container{
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  width: 800px;
+  margin: 0 auto; /* Center the box horizontally */
+  background-color: #f9f9f9;
+  max-height: 400px; /* Set the maximum height you desire */
+  overflow-y: auto; /* Enable vertical scrolling when content overflows */
+}
+
+.setNamed{
+  position: absolute;
+  top:75px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  height: 15px;
+  width: 300px;
+  text-align: center;
+}
+
+.custom-input-right {
+  position: relative;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  width:300px;
+  margin-left: 100px;
+  z-index: 0;
+  overflow-y: auto;
+}
+.custom-input-left{
+  position: relative;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  width:300px;
+  z-index: 0;
+}
+
+.remove-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.remove-button .trash-icon {
+  width: 25px; 
+  height: 22px; 
+  position: absolute;
+  top: 50%;
+  left: 110%;
+  transform: translate(-50%, -50%);
+}
+.createButton {
+  margin: 0 10px;
+  border-radius: 10px;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  background-color: lightgreen;
+}
+.addButton{
+  width: 25px; 
+  height: 22px; 
+  position: relative;
+  top: 70%;
+  transform: translate(-50%, -50%);
+}
+.button-container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+.createButton:hover {
+  background-color: #8CC63F;
+}
+body{
+  background-color: #F7F1E3;
+}

@@ -15,7 +15,7 @@ export default function CreateAndEdit() {
     setSelectedValue(newValue);
     if (newValue) {
       const selectedSetId = setIds[sets.indexOf(newValue)];
-      navigate(`/?name=${newValue}&setId=${selectedSetId}`);
+      navigate(`/study/?name=${newValue}&setId=${selectedSetId}`);
     }
   };
 
